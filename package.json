@@ -2,7 +2,7 @@
   "name": "tcpure",
   "license": "MIT",
   "displayName": "tcpure",
-  "description": "A no-nonsense, lightweight client for TidalCycles",
+  "description": "A lightweight, featureless client for TidalCycles",
   "icon": "images/icon128.png",
   "publisher": "tidalcycles",
   "repository": "https://github.com/kindohm/tcpure",
