@@ -6,7 +6,7 @@
   "icon": "images/icon128.png",
   "publisher": "tidalcycles",
   "repository": "https://github.com/kindohm/tcpure",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "engines": {
     "vscode": "^1.46.0"
   },
