@@ -1,5 +1,6 @@
 {
   "name": "tcpure",
+  "license": "MIT",
   "displayName": "tcpure",
   "description": "A no-nonsense, lightweight client for TidalCycles",
   "version": "1.0.0",
