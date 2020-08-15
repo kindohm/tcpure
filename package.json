@@ -3,6 +3,8 @@
   "license": "MIT",
   "displayName": "tcpure",
   "description": "A no-nonsense, lightweight client for TidalCycles",
+  "icon": "images/icon128.png",
+  "publisher": "tidalcycles",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.46.0"
