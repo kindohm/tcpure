@@ -18,9 +18,3 @@ before using this one.
 
 You do not need to use a file with a `.tidal` extension. You can eval
 Tidal code in any type of file.
-
-## Release Notes
-
-### 1.0.0
-
-Initial release.
