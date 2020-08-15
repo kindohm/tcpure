@@ -1,8 +1,8 @@
 {
   "name": "tcpure",
   "displayName": "tcpure",
-  "description": "",
-  "version": "0.0.1",
+  "description": "A no-nonsense, lightweight client for TidalCycles",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.46.0"
   },
@@ -10,7 +10,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:tcpure.eval"
+    "onCommand:tcpure.eval",
+    "onCommand:tcpure.evalMulti"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -18,11 +19,19 @@
       {
         "command": "tcpure.eval",
         "title": "eval"
+      },
+      {
+        "command": "tcpure.evalMulti",
+        "title": "evalMulti"
       }
     ],
     "keybindings": [
       {
         "command": "tcpure.eval",
+        "key": "Shift+Enter"
+      },
+      {
+        "command": "tcpure.evalMulti",
         "key": "Ctrl+Enter"
       }
     ]

@@ -2,24 +2,24 @@ import { Range, TextEditor, TextDocument, window } from 'vscode';
 import { getRepl } from './repl';
 import { EOL } from 'os';
 
-export default function command() {
+function evalCommand() {
+  const input = getExpressionUnderCursor(false);
+  if (!input) {
+    return;
+  }
+  getRepl((r: any) => {
+    r.send(input);
+  });
+}
+
+function evalMultiCommand() {
   const input = getExpressionUnderCursor(true);
   if (!input) {
     return;
   }
-  const repl = getRepl((r: any) => {
+  getRepl((r: any) => {
     r.send(input);
   });
-  // repl.send(input);
-
-  // const splits = input.split(EOL);
-  // // if (splits.length === 1) {
-  // //   repl.send(input);
-  // // } else {
-  // //   repl.send('{');
-  // //   repl.send(input);
-  // //   repl.send('}');
-  // // }
 }
 
 function getExpressionUnderCursor(getMultiline: boolean): string | null {
@@ -30,6 +30,23 @@ function getExpressionUnderCursor(getMultiline: boolean): string | null {
   }
 
   const document = editor.document;
+  const position = editor.selection.active;
+  const line = document.lineAt(position);
+
+  if (!getMultiline) {
+    if (isEmpty(document, position.line)) {
+      return null;
+    }
+    const range = new Range(
+      line.lineNumber,
+      0,
+      line.lineNumber,
+      line.text.length
+    );
+    feedback(range);
+    return document.getText(range);
+  }
+
   const selectedRange = new Range(
     editor.selection.anchor,
     editor.selection.active
@@ -131,3 +148,5 @@ function feedback(range: Range): void {
     flashDecorationType.dispose();
   }, 250);
 }
+
+export { evalCommand, evalMultiCommand };
