@@ -3,7 +3,7 @@
 TCPURE is a lightweight, featureless client for TidalCycles. 
 Just an editor and _fast_ GHCI REPL output via 
 the VS Code terminal. Uses a hard-coded Tidal bootup sequence with no
-possibility of customization (yet).
+possibility of customization (yet?).
 
 ## Features
 
@@ -55,3 +55,4 @@ Feel free to submit a pull request for:
 
 * bug fixes
 * missing _default_ behaviors that you would normally find in [BootTidal.hs](https://github.com/tidalcycles/Tidal/blob/main/BootTidal.hs).
+* aesthetic enhancements that possibly improve the appearance during a live performance
