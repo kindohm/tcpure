@@ -41,6 +41,17 @@ code --install-extension tcpure-1.1.0.vsix
 
 ## Custom Bootup
 
-If you really want to use a custom Tidal bootup, then you will need
+If you really, _really_ want to use a custom Tidal bootup, then you will need
 to modify the source code. Modify the `bootCommands.ts` file however
 you like, then follow the "Build and install from source" instructions above.
+
+## Contributing
+
+The purpose of this extension is to provide a clean, minimal Tidal 
+environment that is _fast_ in VS Code. Anything beyond minimal, default
+Tidal behavior will not be accepted in pull requests. 
+
+Feel free to submit a pull request for:
+
+* bug fixes
+* missing _default_ behaviors that you would normally find in [BootTidal.hs](https://github.com/tidalcycles/Tidal/blob/main/BootTidal.hs).
