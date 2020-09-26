@@ -21,6 +21,18 @@ Tidal code in any type of file.
 
 ## Installation
 
+If you want to install from a release, download the binary and then:
+
 ``` 
+code --install-extension tcpure-1.1.0.vsix
+```
+
+Otherwise if you want to install from the source code you will need to use
+`vsce` to package it first:
+
+``` 
+git clone git@github.com:kindohm/tcpure.git
+cd tcpure
+vsce package
 code --install-extension tcpure-1.1.0.vsix
 ```
