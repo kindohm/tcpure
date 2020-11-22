@@ -12,6 +12,14 @@ Just start typing some TidalCycles code, and eval it:
 * `Shift+Enter` for a single line eval
 * `Ctrl+Enter` for a multi-line eval
 
+Flash/feedback color is configurable:
+
+```
+{
+  "tcpure.flashDecoration": "#ff0000"
+}
+```
+
 **This extension's keybindings will conflict with the main TidalCycles
 extension**, so make sure to disable that extension's keyboard shortcuts
 before using this one. 
@@ -24,7 +32,7 @@ Tidal code in any type of file.
 If you want to install from a release, download the binary and then:
 
 ``` 
-code --install-extension tcpure-1.1.0.vsix
+code --install-extension tcpure-1.1.1.vsix
 ```
 
 ## Build and install from source
@@ -36,7 +44,7 @@ Otherwise if you want to install from the source code you will need to use
 git clone git@github.com:kindohm/tcpure.git
 cd tcpure
 vsce package
-code --install-extension tcpure-1.1.0.vsix
+code --install-extension tcpure-1.1.1.vsix
 ```
 
 ## Custom Bootup
@@ -44,6 +52,19 @@ code --install-extension tcpure-1.1.0.vsix
 If you really, _really_ want to use a custom Tidal bootup, then you will need
 to modify the source code. Modify the `bootCommands.ts` file however
 you like, then follow the "Build and install from source" instructions above.
+
+## Syntax Highlighting
+
+In order to get syntax highlighting in .tidal files you must do two things:
+
+1. Install the [Haskell Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=justusadam.language-haskell) extension
+2. Associate .tidal files to the Haskell language by adding the following settings in `settings.json`:
+
+```
+"files.associations": {
+    "*.tidal": "haskell"
+}
+```
 
 ## Contributing
 
