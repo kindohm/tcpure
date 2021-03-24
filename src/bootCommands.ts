@@ -1,9 +1,15 @@
+import { workspace } from 'vscode';
+
+const configuration = workspace.getConfiguration('tcpure');
+const calcWindow = configuration.get<number>('calcWindow', 0.05);
+const latency = configuration.get<number>('latency', 0.02);
+
 const bootCommands = [
   ':set -XOverloadedStrings',
   ':set prompt ""',
   ':set prompt-cont ""',
   'import Sound.Tidal.Context',
-  'tidal <- startTidal (superdirtTarget {oLatency = 0.1, oAddress = "127.0.0.1", oPort = 57120}) (defaultConfig {cFrameTimespan = 1/20})',
+  `tidal <- startTidal (superdirtTarget {oLatency = ${latency}, oAddress = "127.0.0.1", oPort = 57120}) (defaultConfig {cFrameTimespan = ${calcWindow}})`,
   ':{',
   'let p = streamReplace tidal',
   '    hush = streamHush tidal',
