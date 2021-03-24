@@ -1,13 +1,17 @@
 # tcpure README
 
-TCPURE is a lightweight, featureless client for TidalCycles.
-Just an editor and _fast_ GHCI REPL output via
-the VS Code terminal. Uses a hard-coded Tidal bootup sequence with no
-possibility of customization (yet?).
+TCPURE is a lightweight and (nearly) featureless client for TidalCycles
+with two goals in mind:
+
+- Just an editor with no bells or whistles
+- _fast_ GHCI REPL output via the VS Code terminal (much like vim-tidal)
+
+The extension uses a hard-coded Tidal bootup sequence with
+extremely limited possibility of customization.
 
 ## Features
 
-Just start typing some TidalCycles code, and eval it:
+Just start typing some TidalCycles code in any file and eval it:
 
 - `Shift+Enter` for a single line eval
 - `Ctrl+Enter` for a multi-line eval
@@ -30,8 +34,8 @@ Tidal's calc window size and latency are also configurable:
 ```
 
 **This extension's keybindings will conflict with the main TidalCycles
-extension**, so make sure to disable that extension's keyboard shortcuts
-before using this one.
+extension**, so make sure to uninstall that extension, or disable its
+keyboard shortcuts before using this one.
 
 You do not need to use a file with a `.tidal` extension. You can eval
 Tidal code in any type of file.
