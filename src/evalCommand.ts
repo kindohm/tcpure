@@ -133,8 +133,8 @@ function isEmpty(document: TextDocument, line: number): boolean {
 }
 
 function feedback(range: Range): void {
-  const configuration = workspace.getConfiguration('tcpure')
-  const flashColor = configuration.get<string>("flashDecoration", "#00ff00");
+  const configuration = workspace.getConfiguration('tcpure');
+  const flashColor = configuration.get<string>('flashDecoration', '#00ff00');
 
   const flashDecorationType = window.createTextEditorDecorationType({
     backgroundColor: flashColor,
