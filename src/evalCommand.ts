@@ -1,25 +1,22 @@
 import { Range, TextEditor, TextDocument, window, workspace } from 'vscode';
-import { getRepl } from './repl';
-import { EOL } from 'os';
+import { getRepl } from './tidalRepl';
 
-function evalCommand() {
+async function evalCommand() {
   const input = getExpressionUnderCursor(false);
   if (!input) {
     return;
   }
-  getRepl((r: any) => {
-    r.send(input);
-  });
+  const r = await getRepl();
+  r.send(input);
 }
 
-function evalMultiCommand() {
+async function evalMultiCommand() {
   const input = getExpressionUnderCursor(true);
   if (!input) {
     return;
   }
-  getRepl((r: any) => {
-    r.send(input);
-  });
+  const r = await getRepl();
+  r.send(input);
 }
 
 function getExpressionUnderCursor(getMultiline: boolean): string | null {
