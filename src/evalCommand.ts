@@ -1,15 +1,17 @@
 import { Range, TextEditor, TextDocument, window, workspace } from 'vscode';
-import { getRepl } from './repl';
+// import { getRepl } from './repl';
 import { EOL } from 'os';
+import { evaluate } from './tidal';
 
 function evalCommand() {
   const input = getExpressionUnderCursor(false);
   if (!input) {
     return;
   }
-  getRepl((r: any) => {
-    r.send(input);
-  });
+  // getRepl((r: any) => {
+  //   r.send(input);
+  // });
+  evaluate(input);
 }
 
 function evalMultiCommand() {
@@ -17,9 +19,10 @@ function evalMultiCommand() {
   if (!input) {
     return;
   }
-  getRepl((r: any) => {
-    r.send(input);
-  });
+  // getRepl((r: any) => {
+  //   r.send(input);
+  // });
+  evaluate(input);
 }
 
 function getExpressionUnderCursor(getMultiline: boolean): string | null {
