@@ -1,9 +1,6 @@
 import { Terminal, window } from 'vscode';
 import { readBootTidal } from './resourceReader';
 
-const { EOL } = require('os');
-
-let extensionPath: string;
 let terminal: Terminal;
 
 interface IRepl {
@@ -11,10 +8,6 @@ interface IRepl {
 }
 
 let instance: IRepl;
-
-export function setExtensionPath(path: string) {
-  extensionPath = path;
-}
 
 export function getRepl(cb: Function): void {
   if (!terminal || !instance) {
@@ -51,11 +44,7 @@ const writeLine = (line: string) => {
 };
 
 const send = (block: string) => {
-  const parts = block.split(EOL);
   writeLine(':{');
   writeLine(block);
-  // parts.forEach((part) => {
-  //   writeLine(part);
-  // });
   writeLine(':}');
 };
