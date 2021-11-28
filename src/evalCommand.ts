@@ -1,6 +1,5 @@
 import { Range, TextEditor, TextDocument, window, workspace } from 'vscode';
 import { getRepl } from './repl';
-import { EOL } from 'os';
 
 function evalCommand() {
   const input = getExpressionUnderCursor(false);

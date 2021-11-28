@@ -1,7 +1,14 @@
-import { ExtensionContext, commands } from 'vscode';
+import * as fs from 'fs';
+import * as path from 'path';
+import { ExtensionContext, commands, window } from 'vscode';
 import { evalCommand, evalMultiCommand } from './evalCommand';
+import { setResourcePath } from './resourceReader';
 
 export function activate(context: ExtensionContext) {
+  let resourcePath = context.asAbsolutePath(path.join('src', 'resources'));
+
+  setResourcePath(resourcePath);
+
   let evalCommandRegistered = commands.registerCommand(
     'tcpure.eval',
     evalCommand

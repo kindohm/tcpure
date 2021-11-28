@@ -1,7 +1,6 @@
 import { Terminal, window } from 'vscode';
-// import { corePath } from './settings';
-// import { evaluate } from './tidal';
-import { bootCommands } from './bootCommands';
+import { readBootTidal } from './resourceReader';
+
 const { EOL } = require('os');
 
 let extensionPath: string;
@@ -22,6 +21,9 @@ export function getRepl(cb: Function): void {
     terminal = window.createTerminal({
       name: 'tcpure',
     });
+
+    const rawBootTidal = readBootTidal();
+    const bootCommands = rawBootTidal.split('\n');
 
     terminal.show();
     writeLine('ghci -XOverloadedStrings');
