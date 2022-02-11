@@ -1,6 +1,5 @@
-import * as fs from 'fs';
 import * as path from 'path';
-import { ExtensionContext, commands, window } from 'vscode';
+import { ExtensionContext, commands } from 'vscode';
 import { evalCommand, evalMultiCommand } from './evalCommand';
 import { setResourcePath } from './resourceReader';
 

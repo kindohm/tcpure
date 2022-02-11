@@ -9,34 +9,38 @@ interface IRepl {
 
 let instance: IRepl;
 
-export function getRepl(cb: Function): void {
-  if (!terminal || !instance) {
-    terminal = window.createTerminal({
-      name: 'tcpure',
-    });
+export function getRepl(): Promise<IRepl> {
+  return new Promise((resolve, reject) => {
+    if (!terminal || !instance) {
+      terminal = window.createTerminal({
+        name: 'tcpure',
+      });
 
-    const rawBootTidal = readBootTidal();
-    const bootCommands = rawBootTidal.split('\n');
+      const rawBootTidal = readBootTidal();
+      const bootCommands = rawBootTidal.split('\n');
 
-    terminal.show();
-    writeLine('ghci -XOverloadedStrings');
+      terminal.show();
+      writeLine('ghci -XOverloadedStrings');
 
-    setTimeout(() => {
-      for (let i = 0; i < bootCommands.length; i++) {
-        writeLine(bootCommands[i]);
-      }
+      setTimeout(() => {
+        for (let i = 0; i < bootCommands.length; i++) {
+          writeLine(bootCommands[i]);
+        }
 
-      window.activeTextEditor?.show();
+        window.activeTextEditor?.show();
 
-      instance = {
-        send,
-      };
+        instance = {
+          send,
+        };
 
-      cb(instance);
-    }, 1000);
-  } else {
-    cb(instance);
-  }
+        resolve(instance);
+        // cb(instance);
+      }, 1000);
+    } else {
+      resolve(instance);
+      // cb(instance);
+    }
+  });
 }
 
 const writeLine = (line: string) => {
