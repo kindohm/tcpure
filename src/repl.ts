@@ -10,7 +10,7 @@ interface IRepl {
 let instance: IRepl;
 
 export function getRepl(): Promise<IRepl> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     if (!terminal || !instance) {
       terminal = window.createTerminal({
         name: 'tcpure',
@@ -20,11 +20,11 @@ export function getRepl(): Promise<IRepl> {
       const bootCommands = rawBootTidal.split('\n');
 
       terminal.show();
-      writeLine('ghci -XOverloadedStrings');
+      await writeLineWait('ghci -XOverloadedStrings', 3000);
 
-      setTimeout(() => {
+      setTimeout(async () => {
         for (let i = 0; i < bootCommands.length; i++) {
-          writeLine(bootCommands[i]);
+          await writeLine(bootCommands[i]);
         }
 
         window.activeTextEditor?.show();
@@ -35,13 +35,25 @@ export function getRepl(): Promise<IRepl> {
 
         resolve(instance);
         // cb(instance);
-      }, 1000);
+      }, 2000);
     } else {
       resolve(instance);
       // cb(instance);
     }
   });
 }
+
+const writeLineWait = async (
+  line: string,
+  time: number = 100
+): Promise<void> => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      terminal.sendText(`${line}`);
+      resolve();
+    }, time);
+  });
+};
 
 const writeLine = (line: string) => {
   terminal.sendText(`${line}`);
