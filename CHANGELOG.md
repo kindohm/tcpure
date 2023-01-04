@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.0] - 2023-01-04
+
+- host SuperCollider / SuperDirt internally
+
 ## [1.1.5] - 2022-02-22
 
 - use well-known BootTidal.hs

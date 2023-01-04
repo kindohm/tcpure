@@ -1,16 +1,23 @@
-import { spawn } from "child_process";
+import { spawn, ChildProcessWithoutNullStreams } from "child_process";
 import * as split2 from "split2";
-import { window } from 'vscode';
+import { window, workspace } from 'vscode';
 
 const sclang = `/Applications/SuperCollider.app/Contents/MacOS/sclang`;
 
-let sclangProcess;
+let sclangProcess: ChildProcessWithoutNullStreams;
 let booted = false;
 
 const detect = 'SuperDirt: listening to Tidal on port 57120';
 
 const outputChannel = window.createOutputChannel("superdirt");
 outputChannel.show();
+
+export const kill = () => {
+  if (sclangProcess) {
+    console.log('killing it');
+    sclangProcess.kill();
+  }
+};
 
 export const bootSuperDirt = (): Promise<void> => {
 
@@ -24,7 +31,11 @@ export const bootSuperDirt = (): Promise<void> => {
 
       outputChannel.appendLine('booting superdirt...');
 
-      const startupFilePath = "/Users/kindohm/test.scd";
+      const configuration = workspace.getConfiguration('tcpure');
+      const startupFilePath = configuration.get<string>('scStartupPath');
+      outputChannel.appendLine(`startupFilePath: ${startupFilePath}`);
+
+      // const startupFilePath = "/Users/kindohm/test.scd";
 
       const spawnOptions = [startupFilePath];
       sclangProcess = spawn(sclang, spawnOptions);
@@ -35,7 +46,7 @@ export const bootSuperDirt = (): Promise<void> => {
 
       sclangProcess.stdout.on("data", (data: any) => {
         const txt = data.toString("utf8");
-        outputChannel.appendLine(txt);
+        outputChannel.append(txt);
         const found = txt.indexOf(detect) !== -1;
         if (found) {
           outputChannel.appendLine('☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️☢️');

@@ -2,6 +2,7 @@ import * as path from 'path';
 import { ExtensionContext, commands } from 'vscode';
 import { evalCommand, evalMultiCommand } from './evalCommand';
 import { setResourcePath } from './resourceReader';
+import { kill } from './superdirt/superdirt';
 
 export function activate(context: ExtensionContext) {
   let resourcePath = context.asAbsolutePath(path.join('src', 'resources'));
@@ -22,4 +23,8 @@ export function activate(context: ExtensionContext) {
   context.subscriptions.push(evalMultiCommandRegistered);
 }
 
-export function deactivate() {}
+export function deactivate() {
+
+  kill();
+
+}

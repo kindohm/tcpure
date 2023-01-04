@@ -37,6 +37,11 @@
           "type": "number",
           "default": 0.02,
           "description": "Latency to SuperCollider, in seconds."
+        },
+        "tcpure.scStartupPath": {
+          "type": "string",
+          "default": "~/Library/Application Support/SuperCollider/startup.scd",
+          "description": "Superdirt/SuperCollider boot file."
         }
       }
     },
