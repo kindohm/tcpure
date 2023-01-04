@@ -57,7 +57,7 @@ Otherwise if you want to install from the source code you will need to use
 git clone git@github.com:kindohm/tcpure.git
 cd tcpure
 vsce package
-code --install-extension tcpure-1.1.3.vsix
+code --install-extension tcpure-1.2.0.vsix
 ```
 
 ## Custom Bootup
