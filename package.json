@@ -6,7 +6,7 @@
   "icon": "images/icon128.png",
   "publisher": "tidalcycles",
   "repository": "https://github.com/kindohm/tcpure",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "engines": {
     "vscode": "^1.46.0"
   },
@@ -37,6 +37,11 @@
           "type": "number",
           "default": 0.02,
           "description": "Latency to SuperCollider, in seconds."
+        },
+        "tcpure.scStartupPath": {
+          "type": "string",
+          "default": "~/Library/Application Support/SuperCollider/startup.scd",
+          "description": "Superdirt/SuperCollider boot file."
         }
       }
     },

@@ -45,7 +45,7 @@ Tidal code in any type of file.
 If you want to install from a release, download the binary and then:
 
 ```
-code --install-extension tcpure-1.1.3.vsix
+code --install-extension tcpure-1.2.0.vsix
 ```
 
 ## Build and install from source
