@@ -1,5 +1,6 @@
 import { Terminal, window } from 'vscode';
 import { readBootTidal } from './resourceReader';
+import { bootSuperDirt } from './superdirt/superdirt';
 
 let terminal: Terminal;
 
@@ -11,6 +12,10 @@ let instance: IRepl;
 
 export function getRepl(): Promise<IRepl> {
   return new Promise(async (resolve, reject) => {
+    await bootSuperDirt();
+
+
+
     if (!terminal || !instance) {
       terminal = window.createTerminal({
         name: 'tcpure',
