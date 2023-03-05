@@ -6,9 +6,9 @@
   "icon": "images/icon128.png",
   "publisher": "tidalcycles",
   "repository": "https://github.com/kindohm/tcpure",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "engines": {
-    "vscode": "^1.46.0"
+    "vscode": "^1.74.0"
   },
   "categories": [
     "Other"
@@ -42,6 +42,11 @@
           "type": "string",
           "default": "~/Library/Application Support/SuperCollider/startup.scd",
           "description": "Superdirt/SuperCollider boot file."
+        },
+        "tcpure.bootSc": {
+          "type": "boolean",
+          "default": "false",
+          "description": "Boot up SuperCollider / SuperDirt on startup."
         }
       }
     },
@@ -75,19 +80,19 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/glob": "^7.1.1",
-    "@types/mocha": "^7.0.2",
-    "@types/node": "^13.11.0",
-    "@types/vscode": "^1.46.0",
+    "@types/glob": "^8.0.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
-    "eslint": "^6.8.0",
-    "glob": "^7.1.6",
-    "mocha": "^7.1.2",
-    "typescript": "^4.3.5",
+    "eslint": "^8.28.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.3",
     "vscode-test": "^1.3.0"
   },
   "dependencies": {
-    "split2": "^3.1.1"
+    "split2": "^4.1.0"
   }
 }

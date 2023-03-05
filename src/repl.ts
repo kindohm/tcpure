@@ -1,4 +1,4 @@
-import { Terminal, window } from 'vscode';
+import { Terminal, window, workspace } from 'vscode';
 import { readBootTidal } from './resourceReader';
 import { bootSuperDirt } from './superdirt/superdirt';
 
@@ -12,9 +12,12 @@ let instance: IRepl;
 
 export function getRepl(): Promise<IRepl> {
   return new Promise(async (resolve, reject) => {
-    await bootSuperDirt();
+    const configuration = workspace.getConfiguration('tcpure');
+    const bootSc = configuration.get<boolean>('bootSc');
 
-
+    if (bootSc){
+      await bootSuperDirt();
+    }
 
     if (!terminal || !instance) {
       terminal = window.createTerminal({
