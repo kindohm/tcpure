@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.3.0] - 2023-03-05
+
+- config option to enable or disable SC/SD bootup
+
 ## [1.2.0] - 2023-01-04
 
 - host SuperCollider / SuperDirt internally
